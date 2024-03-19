@@ -1,0 +1,735 @@
+﻿Program.Sub.ScreenSU.Start
+Gui.frmWIP..Create(BaseForm)
+Gui.frmWIP..Caption("WIP STATUS DASHBOARD")
+Gui.frmWIP..Size(1661,851)
+Gui.frmWIP..MinX(0)
+Gui.frmWIP..MinY(0)
+Gui.frmWIP..Position(0,0)
+Gui.frmWIP..AlwaysOnTop(False)
+Gui.frmWIP..FontName("Tahoma")
+Gui.frmWIP..FontSize(8.25)
+Gui.frmWIP..ControlBox(True)
+Gui.frmWIP..MaxButton(False)
+Gui.frmWIP..MinButton(True)
+Gui.frmWIP..MousePointer(0)
+Gui.frmWIP..Moveable(True)
+Gui.frmWIP..Sizeable(True)
+Gui.frmWIP..ShowInTaskBar(True)
+Gui.frmWIP..TitleBar(True)
+Gui.frmWIP..Event(UnLoad,frmWIP_UnLoad)
+Gui.frmWIP.GsGrid.Create(GsGridControl)
+Gui.frmWIP.GsGrid.Enabled(True)
+Gui.frmWIP.GsGrid.Visible(True)
+Gui.frmWIP.GsGrid.Zorder(0)
+Gui.frmWIP.GsGrid.Size(1626,721)
+Gui.frmWIP.GsGrid.Position(11,75)
+Gui.frmWIP.GsGrid.Event(RowCellClick,GsGrid_RowCellClick)
+Gui.frmWIP.cmdRefresh.Create(Button)
+Gui.frmWIP.cmdRefresh.Enabled(True)
+Gui.frmWIP.cmdRefresh.Visible(True)
+Gui.frmWIP.cmdRefresh.Zorder(0)
+Gui.frmWIP.cmdRefresh.Size(74,29)
+Gui.frmWIP.cmdRefresh.Position(459,9)
+Gui.frmWIP.cmdRefresh.Caption("Refresh")
+Gui.frmWIP.cmdRefresh.FontName("Tahoma")
+Gui.frmWIP.cmdRefresh.FontSize(7.8)
+Gui.frmWIP.cmdRefresh.Event(Click,cmdRefresh_Click)
+Gui.frmWIP.txtWO.Create(TextBox,"",True,88,22,0,70,13,True,0,"Tahoma",7.8,,1)
+Gui.frmWIP.txtWO.Locked(True)
+Gui.frmWIP.lbl1.Create(Label,"WO :",True,30,16,0,36,15,True,0,"Tahoma",7.8,,0,0)
+Gui.frmWIP.lbl1.BorderStyle(0)
+Gui.frmWIP.cmdWOBrowse.Create(Button)
+Gui.frmWIP.cmdWOBrowse.Enabled(True)
+Gui.frmWIP.cmdWOBrowse.Visible(True)
+Gui.frmWIP.cmdWOBrowse.Zorder(0)
+Gui.frmWIP.cmdWOBrowse.Size(27,22)
+Gui.frmWIP.cmdWOBrowse.Position(167,14)
+Gui.frmWIP.cmdWOBrowse.Caption("^")
+Gui.frmWIP.cmdWOBrowse.FontName("Tahoma")
+Gui.frmWIP.cmdWOBrowse.FontSize(7.8)
+Gui.frmWIP.cmdWOBrowse.Event(Click,cmdWOBrowse_Click)
+Gui.frmWIP.cmdclear.Create(Button)
+Gui.frmWIP.cmdclear.Enabled(True)
+Gui.frmWIP.cmdclear.Visible(True)
+Gui.frmWIP.cmdclear.Zorder(0)
+Gui.frmWIP.cmdclear.Size(46,22)
+Gui.frmWIP.cmdclear.Position(198,14)
+Gui.frmWIP.cmdclear.Caption("Clear")
+Gui.frmWIP.cmdclear.FontName("Tahoma")
+Gui.frmWIP.cmdclear.FontSize(7.8)
+Gui.frmWIP.cmdclear.Event(Click,cmdclear_Click)
+Gui.frmWIP.cmdExport.Create(Button)
+Gui.frmWIP.cmdExport.Enabled(True)
+Gui.frmWIP.cmdExport.Visible(True)
+Gui.frmWIP.cmdExport.Zorder(0)
+Gui.frmWIP.cmdExport.Size(63,29)
+Gui.frmWIP.cmdExport.Position(541,9)
+Gui.frmWIP.cmdExport.Caption("Export")
+Gui.frmWIP.cmdExport.FontName("Tahoma")
+Gui.frmWIP.cmdExport.FontSize(7.8)
+Gui.frmWIP.cmdExport.Event(Click,cmdExport_Click)
+Gui.frmWIP.chkDueDate.Create(CheckBox)
+Gui.frmWIP.chkDueDate.Enabled(True)
+Gui.frmWIP.chkDueDate.Visible(True)
+Gui.frmWIP.chkDueDate.Zorder(0)
+Gui.frmWIP.chkDueDate.Size(94,24)
+Gui.frmWIP.chkDueDate.Position(39,44)
+Gui.frmWIP.chkDueDate.Caption("Due Date :")
+Gui.frmWIP.chkDueDate.FontName("Tahoma")
+Gui.frmWIP.chkDueDate.FontSize(7.8)
+Gui.frmWIP.lbl2.Create(Label,"to",True,11,16,0,204,50,True,0,"Tahoma",7.8,,0,0)
+Gui.frmWIP.lbl2.BorderStyle(0)
+
+Gui.frmWIP.dtpCutoff.Create(DatePicker)
+Gui.frmWIP.dtpCutoff.Size(75,24)
+Gui.frmWIP.dtpCutoff.Position(125,48)
+Gui.frmWIP.dtpCutoff.Enabled(True)
+Gui.frmWIP.dtpCutoff.Visible(True)
+Gui.frmWIP.dtpCutoff.Zorder(0)
+Gui.frmWIP.dtpCutoff.CheckBox(False)
+Gui.frmWIP.dtpCutoff.FontName("Tahoma")
+Gui.frmWIP.dtpCutoff.FontSize(7.8)
+
+Gui.frmWIP.dtpCutoff1.Create(DatePicker)
+Gui.frmWIP.dtpCutoff1.Size(75,24)
+Gui.frmWIP.dtpCutoff1.Position(220,48)
+Gui.frmWIP.dtpCutoff1.Enabled(True)
+Gui.frmWIP.dtpCutoff1.Visible(True)
+Gui.frmWIP.dtpCutoff1.Zorder(0)
+Gui.frmWIP.dtpCutoff1.CheckBox(False)
+Gui.frmWIP.dtpCutoff1.FontName("Tahoma")
+Gui.frmWIP.dtpCutoff1.FontSize(7.8)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+Function.Intrinsic.UI.UsePixels ' Allows you to use Pixels instead of Twips throughout
+
+	
+f.ODBC.Connection!con.opencompanyconnection(600)
+	GUI.frmWIP.GsGrid.Anchor(15)
+'	f.Intrinsic.Control.CallSub(Show_Grid)
+	gui.frmWIP..Show
+	gui.frmWIP..WindowState(2)
+	
+	Gui.frmWIP..ContextMenuCreate("ctxAll")
+	Gui.frmWIP.GsGrid.ContextMenuAttach("ctxAll")
+	Gui.frmWIP..ContextMenuAddItem("ctxAll","Mnu1",0,"Job Operation")
+	Gui.frmWIP..ContextMenuAddItem("ctxAll","Mnu2",0,"Inventory Screen")
+	Gui.frmWIP..ContextMenuAddItem("ctxAll","Mnu3",0,"Supply & Demand")
+	Gui.frmWIP..ContextMenuAddItem("ctxAll","Mnu4",0,"Issue Material")
+	Gui.frmWIP..ContextMenuAddItem("ctxAll","Mnu5",0,"PO Detail")
+	Gui.frmWIP..ContextMenuSetItemEventHandler("ctxAll","Mnu1","Mnuproc")
+	Gui.frmWIP..ContextMenuSetItemEventHandler("ctxAll","Mnu2","Mnuproc")
+	Gui.frmWIP..ContextMenuSetItemEventHandler("ctxAll","Mnu3","Mnuproc")
+	Gui.frmWIP..ContextMenuSetItemEventHandler("ctxAll","Mnu4","Mnuproc")
+	Gui.frmWIP..ContextMenuSetItemEventHandler("ctxAll","Mnu5","Mnuproc")
+	
+'Gui.frmWIP.dtpCutoff.Create(DatePicker)
+'Gui.frmWIP.dtpCutoff.Size(75,24)
+'Gui.frmWIP.dtpCutoff.Position(125,48)
+'Gui.frmWIP.dtpCutoff.Enabled(True)
+'Gui.frmWIP.dtpCutoff.Visible(True)
+'Gui.frmWIP.dtpCutoff.Zorder(0)
+'Gui.frmWIP.dtpCutoff.CheckBox(False)
+'Gui.frmWIP.dtpCutoff.FontName("Tahoma")
+'Gui.frmWIP.dtpCutoff.FontSize(7.8)
+
+'Gui.frmWIP.dtpCutoff1.Create(DatePicker)
+'Gui.frmWIP.dtpCutoff1.Size(75,24)
+'Gui.frmWIP.dtpCutoff1.Position(220,48)
+'Gui.frmWIP.dtpCutoff1.Enabled(True)
+'Gui.frmWIP.dtpCutoff1.Visible(True)
+'Gui.frmWIP.dtpCutoff1.Zorder(0)
+'Gui.frmWIP.dtpCutoff1.CheckBox(False)
+'Gui.frmWIP.dtpCutoff1.FontName("Tahoma")
+'Gui.frmWIP.dtpCutoff1.FontSize(7.8)
+Program.Sub.Main.End
+
+Program.Sub.frmWIP_UnLoad.Start
+f.Intrinsic.Control.Try
+
+
+	f.Intrinsic.Control.CallSub(serialize)
+	
+	F.Intrinsic.Control.If(V.DataTable.DTWO.Exists)
+		F.Data.DataView.close("DTWO","dvHS")
+		F.Data.DataTable.close("DTWO")
+	F.Intrinsic.Control.EndIf
+	
+	f.ODBC.Connection!con.Close
+	f.Intrinsic.Control.end
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.end
+	f.Intrinsic.Control.EndTry
+Program.Sub.frmWIP_UnLoad.End
+
+Program.Sub.cmdWOBrowse_Click.Start
+f.Intrinsic.Control.Try
+v.Local.ssql.Declare
+V.Local.iWidths.Declare
+V.Local.sTitles.Declare
+V.Local.sRet.Declare
+
+
+v.Local.ssql.Set("SELECT JOB , SUFFIX , DESCRIPTION , PART FROM V_JOB_HEADER where Date_Closed = '1900-01-01' ORDER BY Job, Suffix")
+F.Intrinsic.String.Split("JOB*!*SUFFIX*!*DESCRIPTION*!*PART","*!*",V.Local.sTitles)
+F.Intrinsic.String.Split("1800*!*1800*!*1800*!*1800","*!*",V.Local.iWidths)
+
+F.Intrinsic.UI.Browser("Select","con",V.Local.ssql,V.Local.sTitles,V.Local.iWidths,V.Local.sRet)
+F.Intrinsic.Control.If(V.Local.sRet,<>,"***CANCEL***")
+	F.Intrinsic.String.Split(V.Local.sRet,"*!*",V.Local.sRet)
+	gui.frmWIP.txtWO.text(V.Local.sRet(0).trim)
+f.Intrinsic.Control.EndIf	
+	
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.cmdWOBrowse_Click.End
+
+Program.Sub.cmdclear_Click.Start
+	gui.frmWIP.txtWO.Text("")
+Program.Sub.cmdclear_Click.End
+
+Program.Sub.cmdRefresh_Click.Start
+f.Intrinsic.Control.Try
+
+v.Local.sSQL.Declare
+v.Local.sSQLSUB.Declare
+v.Local.sdate1.Declare
+v.Local.sdate2.Declare
+
+
+'	gui.frmWIP.GsGrid.SuspendLayout
+
+	F.Intrinsic.Control.If(V.DataTable.DTWO.Exists)
+		F.Data.DataView.close("DTWO","dvHS")
+		F.Data.DataTable.close("DTWO")
+		f.Intrinsic.Control.CallSub(serialize)
+	F.Intrinsic.Control.EndIf
+'	
+'	gui.frmWIP.GsGrid.visible(false)
+	f.Intrinsic.Control.If(v.Screen.frmWIP!txtWO.Text,<>,"")
+		f.Intrinsic.String.Build(" and OPR.JOB like '{0}%'",v.Screen.frmWIP!txtWO.Text,v.Local.sSQLSUB)
+	f.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.Control.If(v.Screen.frmWIP!chkDueDate.Value,=,1)
+		v.Local.sdate1.Set(v.Screen.frmWIP!dtpCutoff.Value)
+		v.Local.sdate2.Set(v.Screen.frmWIP!dtpCutoff1.Value)
+		f.Intrinsic.String.Build(" {0} and JHdr.Date_Due between '{1}' and '{2}'",v.Local.sSQLSUB,v.Local.sdate1.PervasiveDate,v.Local.sdate2.PervasiveDate,v.Local.sSQLSUB)
+	f.Intrinsic.Control.EndIf
+	
+'	v.Local.sSQL.Set("select OPR.job as Job,OPR.suffix as Suffix,seq as 'Seq',rtrim(OPR.part) as Part,hours_estimated as 'Qty Required',hours_actual as 'Qty Issued',hours_estimated-hours_actual as 'Balance',INV.PRODUCT_LINE as PL,INV.BIN as Bin,Inv.DESCRIPTION as Description,INV.UM_INVENTORY as UOM,QTY_ONHAND as 'Qty OnHand',")
+'	f.Intrinsic.String.Build(" {0} rtrim(MFG_PART) as 'Vendor Xref',QTY_REORDER as 'Qty Reorder',CODE_SORT as CodeSort,CODE_SOURCE as 'Code Source',TIME_MATERIAL_LEAD as Lead,rtrim(name_vendor) as Vendor,PURCHASE_ORDER as PO,' ' as POQty from v_job_operations OPR ",v.Local.sSQL,v.Local.sSQL)
+'	f.Intrinsic.String.Build(" {0} join v_INVENTORY_MSTR INV on OPR.part = INV.part and seq not like '9%' join v_INVENTORY_MST2 Mst2 on Mst2.part = INV.part left join v_PO_LINES PO on OPR.JOB = PO.JOB and OPR.SEQ = PO.SEQUENCE and OPR.SUFFIX = PO.SUFFIX LEFT JOIN v_INV_CROSS_REF XREF on XREF.Part = INV.Part",v.Local.sSQL,v.Local.sSQL)
+'	f.Intrinsic.String.Build(" {0} where lmo = 'M' and flag_closed <> 'Y' {1}  and OPR.job+OPR.Suffix in (select HDR.job+HDR.Suffix  from v_job_header HDR where HDR.job = OPR.Job and HDR.suffix=OPR.suffix and Date_Closed = '1900-01-01') ",v.Local.sSQL,v.Local.sSQLSUB,v.Local.sSQL)
+'	
+	
+'	v.Local.sSQL.Set("select OPR.job as Job,OPR.suffix as Suffix,seq as 'Seq',rtrim(OPR.part) as Part,' ' as 'Parent DueDate', JHdr.Date_Due as 'Job DueDate',hours_estimated as 'Qty Required',hours_actual as 'Qty Issued',hours_estimated-hours_actual as 'Balance',INV.PRODUCT_LINE as PL,INV.BIN as Bin,Inv.DESCRIPTION as Description,INV.UM_INVENTORY as UOM,QTY_ONHAND as 'Qty OnHand',")
+'	f.Intrinsic.String.Build(" {0} rtrim(MFG_PART) as 'Vendor Xref',QTY_REORDER as 'Qty Reorder',INV.CODE_SORT as CodeSort,CODE_SOURCE as 'Code Source',QTY_Usage_MO_12 as 'Annual Usage',TIME_MATERIAL_LEAD as Lead,rtrim(name_vendor) as Vendor,PURCHASE_ORDER as PO,' ' as POQty,rtrim(Text) as 'Extra Desc' from v_job_operations OPR ",v.Local.sSQL,v.Local.sSQL)
+'	f.Intrinsic.String.Build(" {0} Join v_job_header JHdr on OPR.job = JHdr.job and OPR.Suffix = JHdr.Suffix and Date_Closed = '1900-01-01' Join v_INVENTORY_MSTR INV on OPR.part = INV.part and seq not like '9%' join v_INVENTORY_MST2 Mst2 on Mst2.part = INV.part left join v_PO_LINES PO on OPR.JOB = PO.JOB and OPR.SEQ = PO.SEQUENCE and OPR.SUFFIX = PO.SUFFIX LEFT JOIN v_INV_CROSS_REF XREF on XREF.Part = INV.Part",v.Local.sSQL,v.Local.sSQL)
+'	f.Intrinsic.String.Build(" {0} Left Join INV_EXTRA_TEXT EXT on Ext.Part = INV.Part where lmo = 'M' and flag_closed <> 'Y' {1}  ",v.Local.sSQL,v.Local.sSQLSUB,v.Local.sSQL)
+'	
+
+'	v.Local.sSQL.Set("select distinct OPR.job as Job,OPR.suffix as Suffix,seq as 'Seq',rtrim(OPR.part) as Part,' ' as 'Parent DueDate', JHdr.Date_Due as 'Job DueDate',hours_estimated as 'Qty Required',hours_actual as 'Qty Issued',hours_estimated-hours_actual as 'Balance',INV.PRODUCT_LINE as PL,INV.BIN as Bin,Inv.DESCRIPTION as Description,INV.UM_INVENTORY as UOM,QTY_ONHAND as 'Qty OnHand',QTY_ONORDER_WO as 'WO QTY',")
+'	f.Intrinsic.String.Build(" {0} rtrim(MFG_PART) as 'Vendor Xref',INV.QTY_ORDER as 'Qty Reorder',INV.QTY_REORDER as 'Reorder Point',INV.CODE_SORT as CodeSort,CODE_SOURCE as 'Code Source',(QTY_USAGE_MO_01+QTY_USAGE_MO_02+QTY_USAGE_MO_03+QTY_USAGE_MO_04+QTY_USAGE_MO_05+QTY_USAGE_MO_06+QTY_USAGE_MO_07+QTY_USAGE_MO_08+QTY_USAGE_MO_09+QTY_USAGE_MO_10+QTY_USAGE_MO_11+QTY_USAGE_MO_12) as 'Annual Usage',TIME_MATERIAL_LEAD as Lead,rtrim(Vend.vendor) as Vendor,rtrim(vend.name_Vendor) as 'Vendor Name', PURCHASE_ORDER as PO,' ' as POQty from v_job_operations OPR ",v.Local.sSQL,v.Local.sSQL)
+'	f.Intrinsic.String.Build(" {0} Join v_job_header JHdr on OPR.job = JHdr.job and OPR.Suffix = JHdr.Suffix and Date_Closed = '1900-01-01' Join v_INVENTORY_MSTR INV on OPR.part = INV.part join v_INVENTORY_MST2 Mst2 on Mst2.part = INV.part left join v_PO_LINES PO on OPR.JOB = PO.JOB and OPR.SEQ = PO.SEQUENCE and OPR.SUFFIX = PO.SUFFIX LEFT JOIN v_INV_CROSS_REF XREF on XREF.Part = INV.Part",v.Local.sSQL,v.Local.sSQL)
+'	f.Intrinsic.String.Build(" {0} left join v_VENDOR_MASTER Vend on Vend.Vendor = XREF.Vendor and Vend.vendor <> '' where lmo = 'M' {1}  ",v.Local.sSQL,v.Local.sSQLSUB,v.Local.sSQL)
+
+	v.Local.sSQL.Set("select distinct OPR.job as Job,OPR.suffix as Suffix,seq as 'Seq',rtrim(OPR.part) as Part, JHdr.Date_Due as 'Job DueDate',hours_estimated as 'Qty Required',hours_actual as 'Qty Issued',hours_estimated-hours_actual as 'Balance',INV.PRODUCT_LINE as PL,INV.BIN as Bin,Inv.DESCRIPTION as Description,INV.UM_INVENTORY as UOM,QTY_ONHAND as 'Qty OnHand',QTY_ONORDER_WO as 'WO QTY',")
+	f.Intrinsic.String.Build(" {0} '' as 'Vendor Xref',INV.QTY_ORDER as 'Qty Reorder',INV.QTY_REORDER as 'Reorder Point',INV.CODE_SORT as CodeSort,CODE_SOURCE as 'Code Source',(QTY_USAGE_MO_01+QTY_USAGE_MO_02+QTY_USAGE_MO_03+QTY_USAGE_MO_04+QTY_USAGE_MO_05+QTY_USAGE_MO_06+QTY_USAGE_MO_07+QTY_USAGE_MO_08+QTY_USAGE_MO_09+QTY_USAGE_MO_10+QTY_USAGE_MO_11+QTY_USAGE_MO_12) as 'Annual Usage',TIME_MATERIAL_LEAD as Lead,rtrim(Vend.vendor) as Vendor,rtrim(vend.name_Vendor) as 'Vendor Name', PURCHASE_ORDER as PO,' ' as POQty from v_job_operations OPR ",v.Local.sSQL,v.Local.sSQL)
+	f.Intrinsic.String.Build(" {0} Join v_job_header JHdr on OPR.job = JHdr.job and OPR.Suffix = JHdr.Suffix and Date_Closed = '1900-01-01' Join v_INVENTORY_MSTR INV on OPR.part = INV.part join v_INVENTORY_MST2 Mst2 on Mst2.part = INV.part left join v_PO_LINES PO on OPR.JOB = PO.JOB and OPR.SEQ = PO.SEQUENCE and OPR.SUFFIX = PO.SUFFIX ",v.Local.sSQL,v.Local.sSQL)
+	f.Intrinsic.String.Build(" {0} left join v_VENDOR_MASTER Vend on Vend.Vendor = Mst2.Name_Vendor where lmo = 'M' {1}  ",v.Local.sSQL,v.Local.sSQLSUB,v.Local.sSQL)
+
+'	
+'	Function.Intrinsic.Debug.InvokeDebugger
+'	Function.Intrinsic.Debug.Stop
+'	
+	f.Intrinsic.UI.InvokeWaitDialog("Loading data","WIP DASHBAORD")
+		
+	f.Data.DataTable.CreateFromSQL("DTWO","con",v.Local.sSQL,"True")
+	f.Data.DataView.Create("dtWO","dvHS",22)
+	
+	'F.Data.Dictionary.CreateFromSQL("dtXdic","con","select rtrim(part),sum(Qty_Order-QTY_Received) as 'POQTY' from v_PO_LINES WHERE FLAG_RECV_CLOSE <> 'Y' AND PURCHASE_ORDER NOT IN (SELECT PURCHASE_ORDER FROM V_PO_HEADER WHERE FLAG_RECV_CLOSE = 'Y') group by part having POQTY > 0 ")
+	F.Data.Dictionary.CreateFromSQL("dtXdic","con","select rtrim(A.part),sum(A.Qty_Order-A.QTY_Received) as 'POQTY' from v_PO_LINES A LEFT JOIN V_PO_HEADER B ON A.PURCHASE_ORDER = B.PURCHASE_ORDER WHERE A.FLAG_RECV_CLOSE <> 'Y' AND B.FLAG_RECV_CLOSED <> 'Y' group by part having POQTY > 0 ")
+	f.Data.Dictionary.SetDefaultReturn("dtXdic","")
+	f.Data.DataTable.FillFromDictionary("DTWO","dtXdic","part","POQty")
+	f.Data.Dictionary.Close("dtXdic")
+
+	f.Data.DataTable.AddColumn("DTWO", "cl2", "Date")
+	F.Data.Dictionary.CreateFromSQL("dtXdic","con","select Job,Date_Due from v_job_header where Date_Closed = '1900-01-01' and suffix = '000' ")
+	f.Data.Dictionary.SetDefaultReturn("dtXdic","1900-01-01")
+	f.Data.DataTable.FillFromDictionary("DTWO","dtXdic","Job","cl2")
+	f.Data.Dictionary.Close("dtXdic")
+	
+	
+	F.Data.Dictionary.CreateFromSQL("dtXdic","con","select rtrim(part),MFG_PART from v_INV_CROSS_REF ")
+	f.Data.Dictionary.SetDefaultReturn("dtXdic","")
+	f.Data.DataTable.FillFromDictionary("DTWO","dtXdic","Part","Vendor Xref")
+	f.Data.Dictionary.Close("dtXdic")
+	
+	
+	
+	Function.Data.DataTable.AddExpressionColumn("DTWO", "PartNo", "String", "Substring(Part,1,17)")
+	Function.Data.DataTable.AddExpressionColumn("DTWO", "PartRev", "String", "Substring(Part,18,20)")
+	
+	
+'	f.Intrinsic.Control.If(v.Caller.user,=,"SUPERVSR")
+		'Convert(TestCol * 100, 'System.Int32')/100"
+		F.Data.Datatable.AddExpressionColumn("DTWO", "Parent DueDate", "Date", "Convert([cl2],System.DateTime)")
+'	f.Intrinsic.Control.endif
+
+		
+
+'	F.Data.DataTable.SetValueFormat("DTWO", -1,"Qty OnHand","Qty OnHand", "#######.00")
+'	F.Data.DataTable.SetValueFormat("DTWO", -1,"Reorder Point","Reorder Point", "#######.00")
+'	F.Data.DataTable.SetValueFormat("DTWO", -1,"Annual Usage","Annual Usage", "#######.00")
+'	F.Data.DataTable.SetValueFormat("DTWO", -1,"Balance","Balance", "#######.00")
+'	F.Data.DataTable.SetValueFormat("DTWO", -1,"Qty Reorder","Qty Reorder", "#######.00")
+'	F.Data.DataTable.SetValueFormat("DTWO", -1,"Qty Required","Qty Required", "#######.00")
+'	F.Data.DataTable.SetValueFormat("DTWO", -1,"Qty Issued","Qty Issued", "#######.00")
+'	F.Data.DataTable.SetValueFormat("DTWO", -1,"POQty","POQty", "#######.00")
+	Function.Data.DataTable.SetValueFormat("DTWO",-1,"Job DueDate","Job DueDate","MM/DD/YYYY")
+'	Function.Data.DataTable.SetValueFormat("DTWO",-1,"Parent DueDate","Parent DueDate","MM/DD/YYYY")
+	
+	
+'	
+	
+
+'	F.Data.Dictionary.CreateFromSQL("dtXdic","con","select Part,Text from INV_EXTRA_TEXT  ")
+'	f.Data.Dictionary.SetDefaultReturn("dtXdic","")
+'	f.Data.DataTable.FillFromDictionary("DTWO","dtXdic","Part","Extra Desc")
+'	f.Data.Dictionary.Close("dtXdic")
+
+
+'	f.Data.DataTable.
+'	Function.Intrinsic.Debug.InvokeDebugger
+'	Function.Intrinsic.Debug.Stop
+	
+'	f.Data.DataTable.DeleteRow("dtWO")
+	
+'	f.Data.DataTable.Merge("dtWOtemp","dtWO",False,2)
+
+'	F.Data.DataTable.close("dtWOtemp")
+
+	
+	f.Intrinsic.Control.CallSub(loadgrid)
+'	
+	gui.frmWIP.GsGrid.visible(true)
+	F.Intrinsic.UI.CloseWaitDialog
+f.Intrinsic.Control.Catch
+	F.Intrinsic.UI.CloseWaitDialog
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.cmdRefresh_Click.End
+Program.Sub.Show_Grid.Start
+f.Intrinsic.Control.Try
+
+v.Local.sSQL.Declare
+v.Local.iTotClmn.Declare
+v.Local.stitle.Declare
+v.Local.i.Declare
+
+	f.ODBC.Connection!con.opencompanyconnection(600)
+	v.Local.sSQL.Set("select distinct OPR.job as Job,OPR.suffix as Suffix,seq as 'Seq',rtrim(OPR.part) as Part,' ' as 'Parent DueDate',Date_due as 'Job DueDate',hours_estimated as 'Qty Required',hours_actual as 'Qty Issued',hours_estimated-hours_actual as 'Balance',INV.PRODUCT_LINE as PL,INV.BIN as Bin,Inv.DESCRIPTION as Description,INV.UM_INVENTORY as UOM,QTY_ONHAND as 'Qty OnHand',")
+	f.Intrinsic.String.Build(" {0} ' ' as 'Vendor Xref',QTY_REORDER as 'Qty Reorder',CODE_SORT as CodeSort,CODE_SOURCE as 'Code Source',(QTY_USAGE_MO_01+QTY_USAGE_MO_02+QTY_USAGE_MO_03+QTY_USAGE_MO_04+QTY_USAGE_MO_05+QTY_USAGE_MO_06+QTY_USAGE_MO_07+QTY_USAGE_MO_08+QTY_USAGE_MO_09+QTY_USAGE_MO_10+QTY_USAGE_MO_11+QTY_USAGE_MO_12) as 'Annual Usage',TIME_MATERIAL_LEAD as Lead,name_vendor as Vendor,PURCHASE_ORDER as PO,' ' as POQty,' ' as 'Extra Desc'  from v_job_operations OPR ",v.Local.sSQL,v.Local.sSQL)
+	f.Intrinsic.String.Build(" {0} join v_INVENTORY_MSTR INV on OPR.part = INV.part and seq not like '9%' join v_INVENTORY_MST2 Mst2 on Mst2.part = INV.part left join v_PO_LINES PO on OPR.JOB = PO.JOB and OPR.SEQ = PO.SEQUENCE and OPR.SUFFIX = PO.SUFFIX ",v.Local.sSQL,v.Local.sSQL)
+	f.Intrinsic.String.Build(" {0} where lmo = 'M' and flag_closed <> 'Y' and OPR.job = '1' ",v.Local.sSQL,v.Local.sSQL)
+	
+	
+	f.Data.DataTable.CreateFromSQL("dtWO","con",v.Local.sSQL,"True")
+	f.Data.DataView.Create("dtWO","dvHS",22)
+
+
+'	gui.frmWIP.GsGrid.AddGridViewFromDataView("GridView1","dtWO","dvHS")
+	gui.frmWIP.GsGrid.AddGridviewFromDatatable("GridView1", "dtWO")
+	
+	gui.frmWIP.GsGrid.GetColumnCount("GridView1",v.Local.iTotClmn)
+	f.Intrinsic.Math.Sub(v.Local.iTotClmn,1,v.Local.iTotClmn)
+	f.Intrinsic.Control.For(v.Local.i,0,v.Local.iTotClmn,1)
+		gui.frmWIP.GsGrid.GetColumnNamebyIndex("GridView1",v.Local.i,v.Local.stitle)
+		gui.frmWIP.GsGrid.SetColumnProperty("GridView1",v.Local.stitle,"AllowEdit",False)
+		gui.frmWIP.GsGrid.SetColumnProperty("GridView1",v.Local.stitle,"ReadOnly",True)
+	
+		gui.frmWIP.GsGrid.SetColumnProperty("GridView1",v.Local.stitle,"HeaderFontBold","True")
+		gui.frmWIP.GsGrid.SetColumnProperty("GridView1",v.Local.stitle,"HeaderBackColor","LIGHTBLUE")
+		gui.frmWIP.GsGrid.SetColumnProperty("GridView1",v.Local.stitle,"HeaderHAlignment","Center")
+		gui.frmWIP.GsGrid.SetColumnProperty("GridView1",v.Local.stitle,"HeaderWordWrap","wrap")
+	f.Intrinsic.Control.Next(v.Local.i)
+'	
+	gui.frmWIP.GsGrid.SetGridViewProperty("GridView1", "ColumnPanelRowHeight", "100")
+'	
+'	gui.frmWIP.GsGrid.SetColumnProperty("GridView","Qty Reorder","visible","false")
+'	gui.frmWIP.GsGrid.SetColumnProperty("GridView","Lead","visible","false")
+'	gui.frmWIP.GsGrid.SetColumnProperty("GridView","Annual Usage","visible","false")
+'	gui.frmWIP.GsGrid.SetColumnProperty("GridView","Bin","visible","false")
+'	gui.frmWIP.GsGrid.SetColumnProperty("GridView","CodeSort","visible","false")
+'	gui.frmWIP.GsGrid.SetColumnProperty("GridView","PL","visible","false")
+''	gui.frmWIP.GsGrid.SetColumnProperty("GridView","Extra Desc","visible","false")
+
+'	gui.frmWIP.GsGrid.SetColumnProperty("GridView","Part","CellForeColor",Variable.Enum.ThemeColors!AccentColor)
+'	gui.frmWIP.GsGrid.SetColumnProperty("GridView","Job","CellForeColor",Variable.Enum.ThemeColors!AccentColor)
+'	gui.frmWIP.GsGrid.SetColumnProperty("GridView","PO","CellForeColor",Variable.Enum.ThemeColors!AccentColor)
+'	
+'	gui.frmWIP.GsGrid.SetColumnProperty("GridView", "Part", "CellFontUnderline", True)
+'	gui.frmWIP.GsGrid.SetColumnProperty("GridView", "Job", "CellFontUnderline", True)
+'	gui.frmWIP.GsGrid.SetColumnProperty("GridView", "PO", "CellFontUnderline", True)
+'	
+'	gui.frmWIP.GsGrid.SetGridViewProperty("GridView","OptionsViewShowAutoFilterRow",True)
+'	
+'	gui.frmWIP.GsGrid.SetColumnProperty("GridView", "Job DueDate", "DisplayCustomDatetime", "d")
+'	gui.frmWIP.GsGrid.SetColumnProperty("GridView", "Parent DueDate", "DisplayCustomDatetime", "d")
+'	
+'	gui.frmWIP.GsGrid.SetGridViewProperty("GridView", "OptionsSelectionEnableAppearanceFocusedRow", "True") 
+'	
+''	gui.frmWIP.GsGrid.SetGridViewProperty("GridView","OptionsViewColumnAutoWidth",False)
+'	
+''	gui.frmWIP.GsGrid.ResumeLayout
+	gui.frmWIP.GsGrid.MainView("GridView1")
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+	
+Program.Sub.Show_Grid.End
+
+Program.Sub.ErrorMsg.Start
+v.Local.sError.Declare
+v.Local.sFile.declare
+
+'Generic Error message.
+f.Intrinsic.String.Build("Project GCG_6883_WIPDASH.g2u {0}{0}Subroutine: {1}{0}Error: {2} with Description: {3}", v.Ambient.NewLine, v.Args.CurrentSub, v.Ambient.ErrorNumber, v.Ambient.ErrorDescription, v.Local.sError)
+f.Intrinsic.UI.Msgbox(v.Local.sError)
+Program.Sub.ErrorMsg.End
+
+Program.Sub.GsGrid_RowCellClick.Start
+f.Intrinsic.Control.Try
+
+v.Local.sParam.Declare
+v.Local.sLoc.Declare
+V.Local.sWO.Declare
+V.Local.sWO1.Declare
+Variable.Local.sPO.Declare
+
+
+f.Intrinsic.Control.ExitSub
+
+'***********************************
+	F.Intrinsic.Control.SelectCase(v.Args.Column)
+		F.Intrinsic.Control.Case("Job")
+			gui.frmWIP.GsGrid.GetCellValueByColumnName("GridView","Job",v.Args.RowIndex,V.Local.sWO)
+			gui.frmWIP.GsGrid.GetCellValueByColumnName("GridView","Suffix",v.Args.RowIndex,V.Local.sWO1)
+'			F.Intrinsic.String.ConcatCallWrapperArgs(7,V.Local.sWO.Trim,V.Local.sWO1.Trim,"A",V.Local.sParam)
+'			F.Global.General.CallWrapperSync(450000,V.Local.sParam)
+
+			F.Intrinsic.String.Build("{0}!*!{1}!*! !*! !*! !*! !*! ",V.Local.sWO,V.Local.sWO1,V.Local.sParam)
+			F.Global.General.CallWrapperAsync(450150,V.Local.sParam)
+		F.Intrinsic.Control.Case("PO")
+			gui.frmWIP.GsGrid.GetCellValueByColumnName("GridView","PO",v.Args.RowIndex,V.Local.sPO)
+			Function.Intrinsic.String.Concat("O!*!",Variable.Local.sPO,"!*!",Variable.Local.sParam)
+			Function.Global.General.CallWrapperASync(175200,Variable.Local.sParam)
+		F.Intrinsic.Control.Case("PartNo")
+			gui.frmWIP.GsGrid.GetCellValueByColumnName("GridView","Part",v.Args.RowIndex,v.Local.sParam)
+			f.Intrinsic.string.Build("O!*!{0}!*!{1}",v.Local.sParam,v.Local.sLoc,v.Local.sParam)
+			Function.Global.General.CallWrapperASync(300000,v.Local.sParam)
+'			F.Intrinsic.String.Concat(V.DataTable.dtJCMT(V.Args.RowIndex).Part!FieldVal, "!*! ", V.Global.sRet)
+'			f.Intrinsic.string.Build("{0}!*!{1}",v.Local.sParam,v.Local.sLoc,v.Local.sParam)
+'			F.Global.General.CallWrapperAsync(300010,v.Local.sParam)
+	F.Intrinsic.Control.EndSelect
+'*****************************************************
+	
+'f.Intrinsic.Control.CallSub(Mnuproc,"ROWINDEX1",v.Args.ROWIndex)
+
+'f.Intrinsic.UI.Msgbox(v.Args.ROWIndex)
+
+
+''F.Intrinsic.Control.If(V.Args.Column, =, "Part")
+''		F.Intrinsic.String.Concat(V.DataTable.dtJCMT(V.Args.RowIndex).Part!FieldVal, "!*! ", V.Global.sRet)
+''		F.Global.General.CallWrapperAsync(300010, V.Global.sRet)
+''	F.Intrinsic.Control.ElseIf(V.Args.Column, =, "Job")
+''		F.Intrinsic.String.Build("{0}!*!{1}!*! !*! !*! !*! !*! ", V.DataTable.dtJCMT(V.Args.RowIndex).Job!FieldVal, V.DataTable.dtJCMT(V.Args.RowIndex).Suffix!FieldVal,V.Global.sRet)
+''		F.Global.General.CallWrapperAsync(450150, V.Global.sRet)
+''	F.Intrinsic.Control.EndIf
+
+'	F.Intrinsic.Control.SelectCase(Variable.args.itemname)
+'		F.Intrinsic.Control.Case("Mnu1")
+'			gui.frmWIP.GsGrid.GetCellValueByColumnName("GridView","Job",v.Args.RowIndex,V.Local.sWO)
+'			gui.frmWIP.GsGrid.GetCellValueByColumnName("GridView","Suffix",v.Args.RowIndex,V.Local.sWO1)
+'			F.Intrinsic.String.ConcatCallWrapperArgs(7,V.Local.sWO.Trim,V.Local.sWO1.Trim,"A",V.Local.sParam)
+'			F.Global.General.CallWrapperSync(450000,V.Local.sParam)
+'		F.Intrinsic.Control.Case("Mnu2")
+'			gui.frmWIP.GsGrid.GetCellValueByColumnName("GridView","Part",v.Args.RowIndex,v.Local.sParam)
+'			f.Intrinsic.string.Build("O!*!{0}!*!{1}",v.Local.sParam,v.Local.sLoc,v.Local.sParam)
+'			Function.Global.General.CallWrapperASync(300000,v.Local.sParam)
+'			F.Intrinsic.String.Concat(V.DataTable.dtJCMT(V.Args.RowIndex).Part!FieldVal, "!*! ", V.Global.sRet)
+'		F.Intrinsic.Control.Case("Mnu4")
+'			gui.frmWIP.GsGrid.GetCellValueByColumnName("GridView","Job",v.Args.RowIndex,V.Local.sWO)
+'			gui.frmWIP.GsGrid.GetCellValueByColumnName("GridView","Suffix",v.Args.RowIndex,V.Local.sWO1)
+''			F.Intrinsic.String.ConcatCallWrapperArgs(7,V.Local.sWO.Trim,V.Local.sWO1.Trim,"A",V.Local.sParam)
+''			F.Global.General.CallWrapperSync(450000,V.Local.sParam)
+
+'			F.Intrinsic.String.Build("{0}!*!{1}!*! !*! !*! !*! !*! ",V.Local.sWO,V.Local.sWO1,V.Local.sParam)
+'			F.Global.General.CallWrapperAsync(450150,V.Local.sParam)
+'		F.Intrinsic.Control.Case("Mnu5")
+'			gui.frmWIP.GsGrid.GetCellValueByColumnName("GridView","PO",v.Args.RowIndex,V.Local.sPO)
+'			Function.Intrinsic.String.Concat("O!*!",Variable.Local.sPO,"!*!",Variable.Local.sParam)
+'			Function.Global.General.CallWrapperASync(175200,Variable.Local.sParam)
+'		F.Intrinsic.Control.Case("Mnu3")
+'			gui.frmWIP.GsGrid.GetCellValueByColumnName("GridView","Part",v.Args.RowIndex,v.Local.sParam)
+'			f.Intrinsic.string.Build("O!*!{0}!*!{1}",v.Local.sParam,v.Local.sLoc,v.Local.sParam)
+''			Function.Global.General.CallWrapperASync(300000,v.Local.sParam)
+''			F.Intrinsic.String.Concat(V.DataTable.dtJCMT(V.Args.RowIndex).Part!FieldVal, "!*! ", V.Global.sRet)
+'			f.Intrinsic.string.Build("{0}!*!{1}",v.Local.sParam,v.Local.sLoc,v.Local.sParam)
+'			F.Global.General.CallWrapperAsync(300010,v.Local.sParam)
+'		
+'	F.Intrinsic.Control.EndSelect
+f.Intrinsic.Control.Catch
+	f.Intrinsic.UI.Msgbox(v.Ambient.ErrorNumber)
+'	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+	
+Program.Sub.GsGrid_RowCellClick.End
+
+Program.Sub.Serialize.Start
+f.Intrinsic.Control.Try
+
+V.Local.sSerialize.Declare 
+
+gui.frmWIP.GsGrid.Serialize("GridView",V.Local.sSerialize)
+F.Global.Registry.AddValue(V.Caller.User,V.Caller.CompanyCode,"GridView",6883,1002,False,"Serialize",False,0,-999.0,1/1/1980,12:00:00 AM,V.Local.sSerialize)
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.Serialize.End
+
+Program.Sub.Deserialize.Start
+f.Intrinsic.Control.Try
+
+V.Local.sSerialize.Declare 
+F.Global.Registry.ReadValue(V.Caller.User,V.Caller.CompanyCode,"GridView",6883,1002,6,"",V.Local.sSerialize)
+F.Intrinsic.Control.If(V.Local.sSerialize.trim,<>,"")
+	gui.frmWIP.GsGrid.Deserialize(V.Local.sSerialize)
+F.Intrinsic.Control.EndIf
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.Deserialize.End
+
+Program.Sub.loadgrid.Start
+f.Intrinsic.Control.Try
+v.Local.iTotClmn.Declare
+v.Local.stitle.Declare
+v.Local.i.Declare
+
+	gui.frmWIP.GsGrid.AddGridViewFromDataView("GridView","dtWO","dvHS")
+	
+	gui.frmWIP.GsGrid.GetColumnCount("GridView",v.Local.iTotClmn)
+	f.Intrinsic.Math.Sub(v.Local.iTotClmn,1,v.Local.iTotClmn)
+	f.Intrinsic.Control.For(v.Local.i,0,v.Local.iTotClmn,1)
+		gui.frmWIP.GsGrid.GetColumnNamebyIndex("GridView",v.Local.i,v.Local.stitle)
+		gui.frmWIP.GsGrid.SetColumnProperty("GridView",v.Local.stitle,"AllowEdit","False")
+		gui.frmWIP.GsGrid.SetColumnProperty("GridView",v.Local.stitle,"ReadOnly","True")
+	
+		gui.frmWIP.GsGrid.SetColumnProperty("GridView",v.Local.stitle,"HeaderFontBold","True")
+		gui.frmWIP.GsGrid.SetColumnProperty("GridView",v.Local.stitle,"HeaderBackColor","LIGHTBLUE")
+		gui.frmWIP.GsGrid.SetColumnProperty("GridView",v.Local.stitle,"HeaderHAlignment","Center")
+		gui.frmWIP.GsGrid.SetColumnProperty("GridView",v.Local.stitle,"HeaderWordWrap","wrap")
+	f.Intrinsic.Control.Next(v.Local.i)
+	
+'	
+''	
+'	gui.frmWIP.GsGrid.SetGridViewProperty("GridView", "Editable", "false")
+'	gui.frmWIP.GsGrid.SetGridViewProperty("GridView", "ReadOnly", "True")
+'	
+'	Gui.frmWIP.GsGrid.SetColumnProperty("GridView","Part","AllowEdit",False)
+'	Gui.frmWIP.GsGrid.SetColumnProperty("GridView","Part","ReadOnly",True)
+	
+	gui.frmWIP.GsGrid.SetColumnProperty("GridView","Qty Reorder","visible","false")
+	gui.frmWIP.GsGrid.SetColumnProperty("GridView","Reorder Point","visible","false")
+	gui.frmWIP.GsGrid.SetColumnProperty("GridView","Lead","visible","false")
+	gui.frmWIP.GsGrid.SetColumnProperty("GridView","Annual Usage","visible","false")
+	gui.frmWIP.GsGrid.SetColumnProperty("GridView","Bin","visible","false")
+	gui.frmWIP.GsGrid.SetColumnProperty("GridView","CodeSort","visible","false")
+	gui.frmWIP.GsGrid.SetColumnProperty("GridView","PL","visible","false")
+	gui.frmWIP.GsGrid.SetColumnProperty("GridView","Part","visible","false")
+'	gui.frmWIP.GsGrid.SetColumnProperty("GridView","Extra Desc","visible","false")
+	gui.frmWIP.GsGrid.SetColumnProperty("GridView","cl2","visible","false")
+
+	gui.frmWIP.GsGrid.SetColumnProperty("GridView","PartNo","CellForeColor",Variable.Enum.ThemeColors!AccentColor)
+	gui.frmWIP.GsGrid.SetColumnProperty("GridView","Job","CellForeColor",Variable.Enum.ThemeColors!AccentColor)
+	gui.frmWIP.GsGrid.SetColumnProperty("GridView","PO","CellForeColor",Variable.Enum.ThemeColors!AccentColor)
+	
+	gui.frmWIP.GsGrid.SetColumnProperty("GridView", "PartNo", "CellFontUnderline", True)
+	gui.frmWIP.GsGrid.SetColumnProperty("GridView", "Job", "CellFontUnderline", True)
+	gui.frmWIP.GsGrid.SetColumnProperty("GridView", "PO", "CellFontUnderline", True)
+	
+	gui.frmWIP.GsGrid.SetGridViewProperty("GridView","OptionsViewShowAutoFilterRow",True)
+	
+	gui.frmWIP.GsGrid.SetColumnProperty("GridView", "Job DueDate", "DisplayCustomDatetime", "d")
+	gui.frmWIP.GsGrid.SetColumnProperty("GridView", "Parent DueDate", "DisplayCustomDatetime", "d")
+
+	Gui.frmWIP.GsGrid.SetColumnProperty("Gridview", "Qty OnHand", "EditMaskType", "numeric")
+	Gui.frmWIP.GsGrid.SetColumnProperty("Gridview", "Qty OnHand", "EditMask", "#,###.00")
+	Gui.frmWIP.GsGrid.SetColumnProperty("Gridview", "Qty OnHand", "EditMaskAsDisplayFormat", true)
+	
+	Gui.frmWIP.GsGrid.SetColumnProperty("Gridview", "WO Qty", "EditMaskType", "numeric")
+	Gui.frmWIP.GsGrid.SetColumnProperty("Gridview", "WO Qty", "EditMask", "#,###.00")
+	Gui.frmWIP.GsGrid.SetColumnProperty("Gridview", "WO Qty", "EditMaskAsDisplayFormat", true)
+	
+	Gui.frmWIP.GsGrid.SetColumnProperty("Gridview", "Reorder Point", "EditMaskType", "numeric")
+	Gui.frmWIP.GsGrid.SetColumnProperty("Gridview", "Reorder Point", "EditMask", "#,###.00")
+	Gui.frmWIP.GsGrid.SetColumnProperty("Gridview", "Reorder Point", "EditMaskAsDisplayFormat", true)
+	
+	Gui.frmWIP.GsGrid.SetColumnProperty("Gridview", "Annual Usage", "EditMaskType", "numeric")
+	Gui.frmWIP.GsGrid.SetColumnProperty("Gridview", "Annual Usage", "EditMask", "#,###.00")
+	Gui.frmWIP.GsGrid.SetColumnProperty("Gridview", "Annual Usage", "EditMaskAsDisplayFormat", true)
+	
+	Gui.frmWIP.GsGrid.SetColumnProperty("Gridview", "Balance", "EditMaskType", "numeric")
+	Gui.frmWIP.GsGrid.SetColumnProperty("Gridview", "Balance", "EditMask", "#,###.00")
+	Gui.frmWIP.GsGrid.SetColumnProperty("Gridview", "Balance", "EditMaskAsDisplayFormat", true)
+	
+	Gui.frmWIP.GsGrid.SetColumnProperty("Gridview", "Qty Reorder", "EditMaskType", "numeric")
+	Gui.frmWIP.GsGrid.SetColumnProperty("Gridview", "Qty Reorder", "EditMask", "#,###.00")
+	Gui.frmWIP.GsGrid.SetColumnProperty("Gridview", "Qty Reorder", "EditMaskAsDisplayFormat", true)
+	
+	Gui.frmWIP.GsGrid.SetColumnProperty("Gridview", "Qty Required", "EditMaskType", "numeric")
+	Gui.frmWIP.GsGrid.SetColumnProperty("Gridview", "Qty Required", "EditMask", "#,###.00")
+	Gui.frmWIP.GsGrid.SetColumnProperty("Gridview", "Qty Required", "EditMaskAsDisplayFormat", true)
+	
+	Gui.frmWIP.GsGrid.SetColumnProperty("Gridview", "Qty Issued", "EditMaskType", "numeric")
+	Gui.frmWIP.GsGrid.SetColumnProperty("Gridview", "Qty Issued", "EditMask", "#,###.00")
+	Gui.frmWIP.GsGrid.SetColumnProperty("Gridview", "Qty Issued", "EditMaskAsDisplayFormat", true)
+	
+	Gui.frmWIP.GsGrid.SetColumnProperty("Gridview", "POQty", "EditMaskType", "numeric")
+	Gui.frmWIP.GsGrid.SetColumnProperty("Gridview", "POQty", "EditMask", "#,###.00")
+	Gui.frmWIP.GsGrid.SetColumnProperty("Gridview", "POQty", "EditMaskAsDisplayFormat", true)
+	
+	
+	gui.frmWIP.GsGrid.SetGridViewProperty("GridView", "OptionsSelectionEnableAppearanceFocusedRow", "True") 
+'	gui.frmWIP.GsGrid.SetGridViewProperty("GridView","OptionsViewColumnAutoWidth",False)
+
+'	gui.frmWIP.GsGrid.ColumnEdit("GridView","SD", "EditorButton", "S&D")
+'	gui.frmWIP.GsGrid.SetColumnProperty("GridView","SD","Caption"," ")
+'	gui.frmWIP.GsGrid.SetColumnProperty("GridView", "SD", "MaxWidth",100)
+	
+	
+'	gui.frmWIP.GsGrid.ResumeLayout
+	gui.frmWIP.GsGrid.MainView("GridView")
+	f.Intrinsic.Control.CallSub(deserialize)	
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.loadgrid.End
+
+Program.Sub.cmdExport_Click.Start
+f.Intrinsic.Control.Try
+
+V.Local.sFileExport.Declare
+
+f.Intrinsic.String.Build("{0}\DashExport.xlsx",v.Caller.LocalGSSTempDir,v.Local.sFileExport)
+Gui.frmWIP.GsGrid.Export(V.Local.sFileExport,"xlsx")
+F.Intrinsic.Task.ShellExec(0,"",V.Local.sFileExport,"","",1)
+
+f.Intrinsic.Control.Catch
+	f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+	f.Intrinsic.Control.EndTry
+Program.Sub.cmdExport_Click.End
+
+Program.Sub.Mnuproc.Start
+f.Intrinsic.Control.Try
+'Function.Intrinsic.Debug.InvokeDebugger
+'Function.Intrinsic.Debug.Stop
+v.Local.sParam.Declare
+v.Local.sLoc.Declare
+V.Local.sWO.Declare
+V.Local.sWO1.Declare
+Variable.Local.sPO.Declare
+V.Local.sRet.Declare
+V.Local.sPath.Declare
+V.Local.bExists.Declare
+
+'Function.Intrinsic.Debug.InvokeDebugger
+'Function.Intrinsic.Debug.Stop
+gui.frmWIP.GsGrid.GetSelectedRowsInFocus(V.Local.sRet)
+f.Intrinsic.Control.If(V.Local.sRet,=,-1)
+	f.Intrinsic.UI.Msgbox("Please select a row, Invalid Row")
+	f.Intrinsic.Control.ExitSub
+f.Intrinsic.Control.EndIf
+'f.Intrinsic.UI.Msgbox(V.Local.sRet)
+
+'	f.Intrinsic.UI.Msgbox(Variable.args.itemname)
+
+'	f.Intrinsic.Control.ExitSub
+	F.Intrinsic.Control.SelectCase(Variable.args.itemname.UCase)
+		F.Intrinsic.Control.Case("MNU1")
+			gui.frmWIP.GsGrid.GetCellValueByColumnName("GridView","Job",V.Local.sRet.long,V.Local.sWO)
+			gui.frmWIP.GsGrid.GetCellValueByColumnName("GridView","Suffix",V.Local.sRet.long,V.Local.sWO1)
+			F.Intrinsic.String.ConcatCallWrapperArgs(7,V.Local.sWO.Trim,V.Local.sWO1.Trim,"A",V.Local.sParam)
+			F.Global.General.CallWrapperSync(450000,V.Local.sParam)
+		F.Intrinsic.Control.Case("MNU2")
+			gui.frmWIP.GsGrid.GetCellValueByColumnName("GridView","Part",V.Local.sRet.long,v.Local.sParam)
+			f.Intrinsic.string.Build("O!*!{0}!*!{1}",v.Local.sParam,v.Local.sLoc,v.Local.sParam)
+			Function.Global.General.CallWrapperASync(300000,v.Local.sParam)	
+		F.Intrinsic.Control.Case("MNU4")
+			gui.frmWIP.GsGrid.GetCellValueByColumnName("GridView","Job",V.Local.sRet.long,V.Local.sWO)
+			gui.frmWIP.GsGrid.GetCellValueByColumnName("GridView","Suffix",V.Local.sRet.long,V.Local.sWO1)
+'			F.Intrinsic.String.ConcatCallWrapperArgs(7,V.Local.sWO.Trim,V.Local.sWO1.Trim,"A",V.Local.sParam)
+'			F.Global.General.CallWrapperSync(450000,V.Local.sParam)
+
+			F.Intrinsic.String.Build("{0}!*!{1}!*! !*! !*! !*! !*! ",V.Local.sWO,V.Local.sWO1,V.Local.sParam)
+			F.Global.General.CallWrapperAsync(450150,V.Local.sParam)
+		F.Intrinsic.Control.Case("MNU5")
+			gui.frmWIP.GsGrid.GetCellValueByColumnName("GridView","PO",V.Local.sRet.long,V.Local.sPO)
+			f.Intrinsic.Control.If(V.Local.sPO.trim,=,"")
+				f.Intrinsic.UI.Msgbox("Invalid PONumber")
+				f.Intrinsic.Control.ExitSub
+			f.Intrinsic.Control.EndIf
+			Function.Intrinsic.String.Concat("O!*!",Variable.Local.sPO,"!*!",Variable.Local.sParam)
+			Function.Global.General.CallWrapperASync(175200,Variable.Local.sParam)
+		F.Intrinsic.Control.Case("MNU3")
+'			gui.frmWIP.GsGrid.GetCellValueByColumnName("GridView","Part",V.Local.sRet.long,v.Local.sParam)
+'			f.Intrinsic.string.Build("O!*!{0}!*!{1}",v.Local.sParam,v.Local.sLoc,v.Local.sParam)
+''			Function.Global.General.CallWrapperASync(300000,v.Local.sParam)
+''			F.Intrinsic.String.Concat(V.DataTable.dtJCMT(V.Args.RowIndex).Part!FieldVal, "!*! ", V.Global.sRet)
+'			f.Intrinsic.string.Build("{0}!*!{1}",v.Local.sParam,v.Local.sLoc,v.Local.sParam)
+'			F.Global.General.CallWrapperAsync(300010,v.Local.sParam)
+				'Open Supply and Demand Screen  v.Caller.TempDir vs V.Caller.LocalGSSTempDir
+				'GSS_LotBinHeatSerial
+			F.Intrinsic.String.Build("{0}Plugins\SupplyAndDemand.exe",V.Caller.LocalGSSTempDir,V.Local.sPath)
+            F.Intrinsic.String.Build("{0}bin\SupplyAndDemand.exe",V.Caller.LocalGSSTempDir,V.Local.sPath)
+            F.Intrinsic.File.Exists(V.Local.sPath,V.Local.bExists)
+            gui.frmWIP.GsGrid.GetCellValueByColumnName("GridView","PART",V.Local.sRet.long,v.Local.sParam)
+'            gui.frmWIP.GsGrid.GetCellValueByColumnName("GridView","LOC",V.Local.sRet.long,V.Local.sLoc)
+            F.Intrinsic.Control.If(V.Local.bExists)
+            	F.Intrinsic.Task.SetEnvironmentVariable("PARTNUMBER",v.Local.sParam)
+            	F.Intrinsic.Task.SetEnvironmentVariable("LOCATIONCODE",V.Local.sLoc)
+            	F.Intrinsic.Task.LaunchAsync(V.Local.sPath,1,V.Local.sPath)
+            F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndSelect
+
+	
+'	'Open Supply and Demand Screen  v.Caller.TempDir vs V.Caller.LocalGSSTempDir
+'            F.Intrinsic.String.Build("{0}bin\SupplyAndDemand.exe",V.Caller.LocalGSSTempDir,V.Local.sPath)
+'            F.Intrinsic.File.Exists(V.Local.sPath,V.Local.bExists)
+'            Gui.frmAPAutomationIndex.gsgcPOLines.GetCellValueByColumnName("gvPOLines","PART",V.Args.RowIndex,V.Local.sPart)
+'            Gui.frmAPAutomationIndex.gsgcPOLines.GetCellValueByColumnName("gvPOLines","LOCATION",V.Args.RowIndex,V.Local.sLoc)
+'            F.Intrinsic.Control.If(V.Local.bExists)
+'            	F.Intrinsic.Task.SetEnvironmentVariable("PARTNUMBER",V.Local.sPart)
+'            	F.Intrinsic.Task.SetEnvironmentVariable("LOCATIONCODE",V.Local.sLoc)
+'            	F.Intrinsic.Task.LaunchAsync(V.Local.sPath,1,V.Local.sPath)
+'            F.Intrinsic.Control.EndIf
+	
+f.Intrinsic.Control.Catch
+'	f.Intrinsic.Control.If(v.Ambient.ErrorNumber,<>,5150)
+		f.Intrinsic.Control.CallSub(ErrorMsg, CurrentSub, v.Ambient.CurrentSubroutine)
+'	f.Intrinsic.Control.endif
+	f.Intrinsic.Control.EndTry
+Program.Sub.Mnuproc.End
+
+Program.Sub.Comments.Start
+${$5$}$20.1.8577.26074$}$1
+${$6$}$triley$}$20230712085844889$}$iK6nerqp9nur1h1iSBfRKBBz1ENCgYv6t82gveU0GUIHH/tDqU9zPckKedZLNkN3J55IRfXsE18=
+Program.Sub.Comments.End
